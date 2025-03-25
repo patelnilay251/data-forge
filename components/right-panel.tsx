@@ -13,6 +13,9 @@ const Plot = dynamic(() => import('react-plotly.js'), { ssr: false })
 // API endpoint constants
 const API_BASE_URL = "http://localhost:8000"
 
+const API_BASE_URL_RENDER = "https://backend-data-forge.onrender.com"
+
+
 interface RightPanelProps {
   dataset: any
 }
@@ -35,7 +38,7 @@ export default function RightPanel({ dataset }: RightPanelProps) {
       setError(null)
 
       try {
-        const response = await fetch(`${API_BASE_URL}/visualize`, {
+        const response = await fetch(`${API_BASE_URL_RENDER}/visualize`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

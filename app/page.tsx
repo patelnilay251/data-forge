@@ -10,6 +10,8 @@ import GeometricPattern from "@/components/geometric-pattern"
 // API endpoint constants
 const API_BASE_URL = "http://localhost:8000"
 
+const API_BASE_URL_RENDER = "https://backend-data-forge.onrender.com"
+
 export default function Home() {
   const [dataset, setDataset] = useState<any>(null)
   const [cells, setCells] = useState<{ id: number; code: string; output: string | null; isOutputVisible: boolean }[]>([
@@ -26,7 +28,7 @@ export default function Home() {
       formData.append("file", file)
 
       // Call the backend API to upload and process the file
-      const response = await fetch(`${API_BASE_URL}/upload`, {
+      const response = await fetch(`${API_BASE_URL_RENDER}/upload`, {
         method: "POST",
         body: formData,
       })
@@ -63,7 +65,7 @@ export default function Home() {
       )
 
       // Call the backend API to execute the code
-      const response = await fetch(`${API_BASE_URL}/execute`, {
+      const response = await fetch(`${API_BASE_URL_RENDER}/execute`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
